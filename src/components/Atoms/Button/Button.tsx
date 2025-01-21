@@ -16,6 +16,7 @@ export default function Button({
       size={size}
       buttonType={buttonType}
       {...props}
+      icon={icon}
     >
       <Typography variant={buttonType === "subtitle" ? "body2" : "caption"}>
         {children}

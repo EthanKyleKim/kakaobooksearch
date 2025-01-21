@@ -7,13 +7,18 @@ import Input from "../../Atoms/Input/Input";
 import Button from "../../Atoms/Button/Button";
 import Typography from "../../Atoms/Typography/Typography";
 import { SearcBarContainer } from "./SerachBar.styeld";
+import { Meta } from "../../../api/types";
 
-export default function SearchInput() {
-  // Lazy initialization으로 초기 상태 설정
+export default function SearchBar({ meta }: { meta: Meta }) {
+  // Lazy initialization으로 localstorage 초기 상태 설정
   const [history, setHistory] = useState<SearchHistoryItem[]>(() =>
     SearchHistoryService.getHistory()
   );
+  // input value
   const [inputValue, setInputValue] = useState("");
+
+  // 검색된 문서 수
+  const totalCount = meta.total_count.toLocaleString("ko-KR");
 
   const handleSearch = () => {
     if (!inputValue.trim()) return;
@@ -53,8 +58,17 @@ export default function SearchInput() {
         />
         <Button buttonType="subtitle">상세검색</Button>
       </div>
-      <div>
-        <Typography variant="body2">도서 검색 결과 총 21건</Typography>
+      <div style={{ display: "flex", gap: 16 }}>
+        <div style={{ display: "flex" }}>
+          <Typography variant="body2">도서 검색 결과</Typography>
+        </div>
+        <div style={{ display: "flex" }}>
+          <Typography variant="body2">총&nbsp;</Typography>
+          <Typography variant="body2" color="primary">
+            {totalCount}
+          </Typography>
+          <Typography variant="body2">건</Typography>
+        </div>
       </div>
     </SearcBarContainer>
   );

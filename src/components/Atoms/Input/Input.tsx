@@ -11,7 +11,6 @@ import {
 } from "./Input.styled";
 import { InputProps } from "./Input.type";
 import Typography from "../Typography/Typography";
-import theme from "../Theme";
 
 export default function Input({
   placeholder,

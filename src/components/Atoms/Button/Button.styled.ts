@@ -14,8 +14,7 @@ export const StyledButton = styled.button<ButtonProps>`
     if (size === "full") return "100%";
     return "115px";
   }};
-  padding: ${({ buttonType }) =>
-    buttonType === "subtitle" ? "5px 10px" : "13px 20px"};
+
   border-radius: 8px;
   border: ${({ buttonType, theme }) =>
     buttonType === "subtitle" ? `1px solid ${theme.colors.subtitle}` : "none"};
