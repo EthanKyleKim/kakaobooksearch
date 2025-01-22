@@ -1,23 +1,28 @@
-import { typographyStyles } from "./../Typography/Typography.styeld";
 import styled from "styled-components";
+import { typographyStyles } from "../Typography/Typography.styeld";
 
-export const InputContainer = styled.div<{ isFocused: boolean }>`
+export const InputContainer = styled.div<{
+  isFocused: boolean;
+  hasHistory: boolean;
+}>`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 480px;
-  padding: 10px 20px;
-  border-radius: ${({ isFocused }) => (isFocused ? "24px" : "100px")};
-  transition: border-radius 0.3s ease, height 0.3s ease;
+  padding: 10px;
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.colors.lightGray};
-  transition: height 0.3s ease;
-  height: ${({ isFocused }) => (isFocused ? "100%" : "50px")};
+  height: 50px;
+  overflow: visible;
+  border-radius: ${({ isFocused, hasHistory }) =>
+    isFocused && hasHistory ? "24px 24px 0px 0px" : "100px"};
 `;
 
 export const InputWrapper = styled.div`
   display: flex;
   align-items: center;
+  width: 100%;
 `;
 
 export const IconWrapper = styled.div`
@@ -37,26 +42,37 @@ export const StyledInput = styled.input`
   ${typographyStyles.caption}
 `;
 
+export const SearchListContainer = styled.div<{ isFocused: boolean }>`
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.lightGray};
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  z-index: 1;
+  display: ${({ isFocused }) => (isFocused ? "block" : "none")};
+`;
+
 export const SearchListItem = styled.div`
-  width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 16px;
+  padding: 12px 25px 12px 51px;
   cursor: pointer;
-  margin-left: 28px;
 
   span {
     word-wrap: break-word;
     word-break: break-word;
   }
 
-  span:first-child {
-    padding-top: 16px;
-  }
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.gray};
 
-  span:last-child {
-    padding-bottom: 4px;
+    &:last-child:hover {
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+    }
   }
 `;
 
@@ -64,8 +80,9 @@ export const DeleteButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+  padding: 0;
+  margin-left: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 16px;
 `;

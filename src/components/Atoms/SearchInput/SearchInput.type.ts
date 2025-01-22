@@ -1,8 +1,7 @@
 import React from "react";
 import { SearchHistoryItem } from "../../../service/SearchHistoryService";
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps {
   placeholder: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

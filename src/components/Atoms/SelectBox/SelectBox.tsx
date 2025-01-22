@@ -14,9 +14,10 @@ export default function SelectBox({
   options,
   placeholder = "Select",
   onSelect,
+  value,
 }: SelectBoxProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selected, setSelected] = useState(value);
 
   const handleSelect = (value: string) => {
     setSelected(value);
@@ -39,7 +40,9 @@ export default function SelectBox({
               key={option.value}
               onClick={() => handleSelect(option.label)}
             >
-              <Typography variant="caption" color="subtitle">{option.label}</Typography>
+              <Typography variant="caption" color="subtitle">
+                {option.label}
+              </Typography>
             </OptionItem>
           ))}
         </Options>

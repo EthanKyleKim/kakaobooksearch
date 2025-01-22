@@ -19,7 +19,7 @@ export default function DocumentListItemInfo({
   isExpanded,
 }: DocumentListItemInfoProps) {
   const { thumbnail, title, authors, contents } = document;
-  const bookContentWithEllipsis = `${contents}...`;
+  const bookContentWithEllipsis = contents ? `${contents}...` : "-";
 
   // 커스텀 훅 사용
   const { isFavorite, toggleFavorite } = useFavoriteStatus(document);

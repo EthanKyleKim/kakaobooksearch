@@ -1,5 +1,5 @@
-import BracketClose from "../../../assets/icon_bracketClose.svg?react";
-import BracketOpen from "../../../assets/icon_bracketOpen.svg?react";
+import IconBracketClose from "../../../assets/icon_bracketClose.svg?react";
+import IconBracketOpen from "../../../assets/icon_bracketOpen.svg?react";
 import Button from "../../Atoms/Button/Button";
 
 interface DocumentListItemActionsProps {
@@ -15,7 +15,7 @@ export default function DocumentListItemActions({
     <Button
       variant="secondary"
       onClick={onToggleExpand}
-      icon={isExpanded ? <BracketClose /> : <BracketOpen />}
+      icon={isExpanded ? <IconBracketClose /> : <IconBracketOpen />}
     >
       상세보기
     </Button>

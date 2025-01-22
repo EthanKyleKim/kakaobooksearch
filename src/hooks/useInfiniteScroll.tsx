@@ -1,18 +1,20 @@
 import { useEffect, useRef } from "react";
 
-/** BookList 무한 스크롤 Hook */
 export const useInfiniteScroll = (
   isFetching: boolean,
-  onLoadMore: () => void
+  hasNextPage: boolean | undefined,
+  fetchNextPage: () => void
 ) => {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const lastItemRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    if (!hasNextPage) return; // 더 이상 로드할 페이지가 없으면 종료
+
     observerRef.current = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !isFetching) {
-          onLoadMore();
+          fetchNextPage();
         }
       },
       { threshold: 1.0 }
@@ -27,7 +29,7 @@ export const useInfiniteScroll = (
         observerRef.current.unobserve(lastItemRef.current);
       }
     };
-  }, [isFetching, onLoadMore]);
+  }, [isFetching, hasNextPage, fetchNextPage]);
 
   return { lastItemRef };
 };

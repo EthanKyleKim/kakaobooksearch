@@ -19,6 +19,10 @@ export default function DocumentListItem({ document }: DocumentListItemProps) {
     setIsExpanded((prev) => !prev);
   };
 
+  const handleOpenInNewTab = (url: string) => {
+    window.open(url, "_blank");
+  };
+
   return (
     <ListItemContainer isExpanded={isExpanded}>
       {/* 왼쪽: 썸네일 + 책 정보 */}
@@ -34,7 +38,11 @@ export default function DocumentListItem({ document }: DocumentListItemProps) {
 
           <DocumentListItemPrice document={document} isExpanded />
 
-          <Button variant="primary" size="large">
+          <Button
+            variant="primary"
+            size="large"
+            onClick={() => handleOpenInNewTab(document.url)}
+          >
             구매하기
           </Button>
         </ActionContainer>
@@ -42,7 +50,11 @@ export default function DocumentListItem({ document }: DocumentListItemProps) {
         <>
           <DocumentListItemPrice document={document} isExpanded={false} />
           <ActionContainer isExpanded={false}>
-            <Button variant="primary" size="default">
+            <Button
+              variant="primary"
+              size="default"
+              onClick={() => handleOpenInNewTab(document.url)}
+            >
               구매하기
             </Button>
 

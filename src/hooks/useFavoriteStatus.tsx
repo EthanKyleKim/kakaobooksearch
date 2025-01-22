@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Book } from "../api/types";
 import { FavoriteService } from "../service/FavoriteService";
 
-export function useFavoriteStatus(book: Book) {
+/** 썸네일 찜 Hook */
+export const useFavoriteStatus = (book: Book) => {
   const [isFavorite, setIsFavorite] = useState<boolean>(() =>
     FavoriteService.isFavorite(book)
   );
@@ -18,4 +19,4 @@ export function useFavoriteStatus(book: Book) {
   };
 
   return { isFavorite, toggleFavorite };
-}
+};
