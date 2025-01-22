@@ -1,61 +1,55 @@
-import { useState } from "react";
-import {
-  SearchHistoryItem,
-  SearchHistoryService,
-} from "../../../service/SearchHistoryService";
-import Input from "../../Atoms/Input/Input";
-import Button from "../../Atoms/Button/Button";
+import SearchInput from "../../Atoms/SearchInput/SearchInput";
 import Typography from "../../Atoms/Typography/Typography";
-import { SearcBarContainer } from "./SerachBar.styeld";
+import {
+  SearcBarContainer,
+  SearchHeader,
+  SearchResults,
+} from "./SerachBar.styeld";
+import DetailSearchModal from "../../Molecules/DetailSearchModal/DetailSearchModal";
+import { Meta } from "../../../api/types";
+import { useSearchBar } from "../../../hooks/useSearchBar";
 
-export default function SearchInput() {
-  // Lazy initialization으로 초기 상태 설정
-  const [history, setHistory] = useState<SearchHistoryItem[]>(() =>
-    SearchHistoryService.getHistory()
-  );
-  const [inputValue, setInputValue] = useState("");
-
-  const handleSearch = () => {
-    if (!inputValue.trim()) return;
-    const updatedHistory = SearchHistoryService.addHistory(inputValue.trim());
-    setHistory(updatedHistory);
-    setInputValue("");
-  };
-
-  const handleSelectHistory = (keyword: string) => {
-    setInputValue(keyword);
-  };
-
-  const handleDeleteHistory = (timestamp: number) => {
-    const updatedHistory = SearchHistoryService.deleteHistory(timestamp);
-    setHistory(updatedHistory);
-  };
+export default function SearchBar({ meta }: { meta: Meta }) {
+  const {
+    history,
+    totalSearchCount,
+    totalSearchInputValue,
+    setTotalSearchInputValue,
+    handleSearch,
+    handleSelectHistory,
+    handleDeleteHistory,
+  } = useSearchBar(meta);
 
   return (
     <SearcBarContainer>
       <Typography variant="title2">도서 검색</Typography>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          margin: "16px 0px 26px 0px",
-          gap: 16,
-        }}
-      >
-        <Input
+      <SearchHeader>
+        <SearchInput
           placeholder="검색어 입력"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          value={totalSearchInputValue}
+          onChange={(e) => setTotalSearchInputValue(e.target.value)}
           onSearch={handleSearch}
           history={history}
           onSelectHistory={handleSelectHistory}
           onDeleteHistory={handleDeleteHistory}
         />
-        <Button buttonType="subtitle">상세검색</Button>
-      </div>
-      <div>
-        <Typography variant="body2">도서 검색 결과 총 21건</Typography>
-      </div>
+        <DetailSearchModal
+          setTotalSearchInputValue={setTotalSearchInputValue}
+        />
+      </SearchHeader>
+
+      <SearchResults>
+        <div>
+          <Typography variant="body2">도서 검색 결과</Typography>
+        </div>
+        <div>
+          <Typography variant="body2">총&nbsp;</Typography>
+          <Typography variant="body2" color="primary">
+            {totalSearchCount}
+          </Typography>
+          <Typography variant="body2">건</Typography>
+        </div>
+      </SearchResults>
     </SearcBarContainer>
   );
 }

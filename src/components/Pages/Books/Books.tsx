@@ -1,9 +1,9 @@
-import SearchBar from "../../Organisms/SearchBar/SearchBar";
+import BooksTemplates from "../../Templates/BooksTemplats/BooksTemplates";
 
 export default function Books() {
   return (
     <>
-      <SearchBar />
+      <BooksTemplates />
     </>
   );
 }

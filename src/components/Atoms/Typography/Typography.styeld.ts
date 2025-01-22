@@ -47,6 +47,9 @@ export const typographyStyles = {
 
 // StyledTypography 컴포넌트
 export const StyledTypography = styled.span<TypographyProps>`
+  display: inline;
   ${({ variant }) => typographyStyles[variant]};
-  color: ${({ theme, color }) => (color ? theme.colors[color] : 'inherit')};
+  color: ${({ theme, color }) => (color ? theme.colors[color] : "inherit")};
+  line-height: ${({ lineHeight }) => lineHeight};
+  text-decoration: ${({ textDecoration }) => textDecoration || "none"};
 `;
