@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Books from "./components/Pages/Books/Books";
+import BookSearch from "./components/Pages/BookSearch/BookSearch";
 import Favorites from "./components/Pages/Favorites/Favorites";
 import { ThemeProvider } from "styled-components";
 import theme from "./components/Atoms/Theme";
 import Header from "./components/Atoms/Header/Header";
+import "./App.css";
 
 const App = () => {
   return (
@@ -11,7 +12,7 @@ const App = () => {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<Books />} />
+          <Route path="/" element={<BookSearch />} />
           <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </Router>

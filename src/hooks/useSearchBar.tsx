@@ -1,18 +1,16 @@
 import { useState } from "react";
-import { Meta } from "../api/types";
 import {
   SearchHistoryItem,
   SearchHistoryService,
 } from "../service/SearchHistoryService";
 import { useTotalSearchStore } from "../store/TotalSearchStore";
 
-export function useSearchBar(meta: Meta) {
+export function useSearchBar() {
   // Lazy initialization으로 localstorage 초기 상태 설정
   const [history, setHistory] = useState<SearchHistoryItem[]>(() =>
     SearchHistoryService.getHistory()
   );
   const [totalSearchInputValue, setTotalSearchInputValue] = useState("");
-  const totalSearchCount = meta?.total_count.toLocaleString("ko-KR") || 0;
   const { setTotalSearchKeyword } = useTotalSearchStore();
 
   const handleSearch = () => {
@@ -35,7 +33,6 @@ export function useSearchBar(meta: Meta) {
 
   return {
     history,
-    totalSearchCount,
     totalSearchInputValue,
     setTotalSearchInputValue,
     handleSearch,
