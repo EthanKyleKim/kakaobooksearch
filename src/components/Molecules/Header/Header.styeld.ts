@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import theme from "../../Atoms/Theme";
 
 export const HeaderContainer = styled.header`
   position: relative;
@@ -31,14 +32,14 @@ export const Nav = styled.nav`
 
 export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.textPrimary};
+  color: ${theme.colors.textPrimary};
   transition: color 0.3s ease, border-bottom 0.3s ease;
 
   &.active {
-    border-bottom: 1px solid ${({ theme }) => theme.colors.primary};
+    border-bottom: 1px solid ${theme.colors.primary};
   }
 
   &:hover {
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${theme.colors.primary};
   }
 `;

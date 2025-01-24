@@ -49,7 +49,6 @@ export const typographyStyles = {
 export const StyledTypography = styled.span<TypographyProps>`
   display: inline;
   ${({ variant }) => typographyStyles[variant]};
-  color: ${({ theme, color }) => (color ? theme.colors[color] : "inherit")};
-  line-height: ${({ lineHeight }) => lineHeight};
+  line-height: ${({ $lineHeight }) => $lineHeight};
   text-decoration: ${({ textDecoration }) => textDecoration || "none"};
 `;

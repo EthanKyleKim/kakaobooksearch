@@ -4,20 +4,20 @@ import { PriceContainer, PriceRow } from "./DocumentListItem.styled";
 
 interface DocumentListItemPriceProps {
   document: Book;
-  isExpanded: boolean;
+  $isExpanded: boolean;
 }
 
 export default function DocumentListItemPrice({
   document,
-  isExpanded,
+  $isExpanded,
 }: DocumentListItemPriceProps) {
   const { price, sale_price } = document;
   const isOnSale = sale_price !== -1;
 
-  // 펼쳤을 때 (isExpanded=true) 디테일 모드
-  if (isExpanded) {
+  // 펼쳤을 때 ($isExpanded=true) 디테일 모드
+  if ($isExpanded) {
     return (
-      <PriceContainer isExpanded>
+      <PriceContainer $isExpanded>
         <PriceRow>
           <div style={{ width: "25%" }}>
             <Typography color="subtitle" variant="captionSmall">
@@ -53,9 +53,9 @@ export default function DocumentListItemPrice({
     );
   }
 
-  // 펼치지 않았을 때 (isExpanded=false)
+  // 펼치지 않았을 때 ($isExpanded=false)
   return (
-    <PriceContainer isExpanded={false}>
+    <PriceContainer $isExpanded={false}>
       <Typography color="textPrimary" variant="title3">
         {isOnSale
           ? `${sale_price.toLocaleString("ko-KR")}원`

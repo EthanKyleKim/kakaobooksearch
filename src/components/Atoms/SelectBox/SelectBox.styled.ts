@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import theme from "../Theme";
 
 export const Container = styled.div`
   position: relative;
@@ -11,7 +12,7 @@ export const StyledSelectBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${theme.colors.white};
   border-bottom: 1px solid #d2d6da;
   cursor: pointer;
 `;
@@ -27,7 +28,7 @@ export const Options = styled.ul`
   width: 100%;
   max-height: 200px;
   overflow-y: auto;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${theme.colors.white};
   z-index: 1000;
   padding: 0;
   margin: 0;
@@ -42,7 +43,7 @@ export const OptionItem = styled.li`
   display: flex;
   align-items: center;
   padding: 0 8px;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${theme.colors.white};
   cursor: pointer;
 
   &:hover {

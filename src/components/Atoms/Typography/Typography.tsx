@@ -17,7 +17,7 @@ export default function Typography({
   children,
   as,
   color,
-  lineHeight,
+  $lineHeight,
   textDecoration,
 }: TypographyProps) {
   const Component = as || variantToTag[variant]; // `as` 우선 적용, 없으면 variant 기반
@@ -27,7 +27,7 @@ export default function Typography({
       as={Component}
       variant={variant}
       color={color}
-      lineHeight={lineHeight}
+      $lineHeight={$lineHeight}
       textDecoration={textDecoration}
     >
       {children}

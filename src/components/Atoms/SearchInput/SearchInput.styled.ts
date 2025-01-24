@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { typographyStyles } from "../Typography/Typography.styeld";
+import theme from "../Theme";
 
 export const InputContainer = styled.div<{
-  isFocused: boolean;
-  hasHistory: boolean;
+  $isFocused: boolean;
+  $hasHistory: boolean;
 }>`
   position: relative;
   display: flex;
@@ -12,11 +13,11 @@ export const InputContainer = styled.div<{
   width: 480px;
   padding: 10px;
   box-sizing: border-box;
-  background-color: ${({ theme }) => theme.colors.lightGray};
+  background-color: ${theme.colors.lightGray};
   height: 50px;
   overflow: visible;
-  border-radius: ${({ isFocused, hasHistory }) =>
-    isFocused && hasHistory ? "24px 24px 0px 0px" : "100px"};
+  border-radius: ${({ $isFocused, $hasHistory }) =>
+    $isFocused && $hasHistory ? "24px 24px 0px 0px" : "100px"};
 `;
 
 export const InputWrapper = styled.div`
@@ -38,20 +39,20 @@ export const StyledInput = styled.input`
   outline: none;
   background: transparent;
   width: 380px;
-  color: ${({ theme }) => theme.colors.subtitle};
+  color: ${theme.colors.subtitle};
   ${typographyStyles.caption}
 `;
 
-export const SearchListContainer = styled.div<{ isFocused: boolean }>`
+export const SearchListContainer = styled.div<{ $isFocused: boolean }>`
   position: absolute;
   top: 50px;
   left: 0;
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.lightGray};
+  background-color: ${theme.colors.lightGray};
   border-bottom-left-radius: 24px;
   border-bottom-right-radius: 24px;
   z-index: 1;
-  display: ${({ isFocused }) => (isFocused ? "block" : "none")};
+  display: ${({ $isFocused }) => ($isFocused ? "block" : "none")};
 `;
 
 export const SearchListItem = styled.div`
@@ -67,7 +68,7 @@ export const SearchListItem = styled.div`
   }
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.gray};
+    background-color: ${theme.colors.gray};
 
     &:last-child:hover {
       border-bottom-left-radius: 24px;

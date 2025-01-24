@@ -6,6 +6,6 @@ export interface TypographyProps {
   children: React.ReactNode;
   as?: React.ElementType; // 태그를 수동으로 지정할 경우
   color?: keyof typeof theme.colors; // 테마에서 사용할 색상 키
-  lineHeight?: string;
+  $lineHeight?: string;
   textDecoration?: React.CSSProperties["textDecoration"];
 }
