@@ -9,9 +9,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       variant = "primary",
       size = "default",
-      buttonType = "defaultButton",
+      $buttonType = "defaultButton",
       icon,
-      ...props
+      onClick,
     },
     ref
   ) => {
@@ -20,11 +20,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         variant={variant}
         size={size}
-        buttonType={buttonType}
-        {...props}
+        $buttonType={$buttonType}
         icon={icon}
+        onClick={onClick}
       >
-        <Typography variant={buttonType === "subtitle" ? "body2" : "caption"}>
+        <Typography variant={$buttonType === "subtitle" ? "body2" : "caption"}>
           {children}
         </Typography>
         {icon && <IconContainer>{icon}</IconContainer>}

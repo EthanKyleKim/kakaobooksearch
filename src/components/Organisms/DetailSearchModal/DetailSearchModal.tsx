@@ -64,7 +64,7 @@ export default function DetailSearchModal({
 
   return (
     <>
-      <Button ref={buttonRef} buttonType="subtitle" onClick={openModal}>
+      <Button ref={buttonRef} $buttonType="subtitle" onClick={openModal}>
         상세검색
       </Button>
       {isModalOpen && (

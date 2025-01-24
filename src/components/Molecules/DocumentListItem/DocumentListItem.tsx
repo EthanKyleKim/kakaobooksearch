@@ -13,7 +13,7 @@ interface DocumentListItemProps {
 }
 
 export default function DocumentListItem({ document }: DocumentListItemProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [$isExpanded, setIsExpanded] = useState(false);
 
   const handleToggleExpand = () => {
     setIsExpanded((prev) => !prev);
@@ -24,19 +24,19 @@ export default function DocumentListItem({ document }: DocumentListItemProps) {
   };
 
   return (
-    <ListItemContainer isExpanded={isExpanded}>
+    <ListItemContainer $isExpanded={$isExpanded}>
       {/* 왼쪽: 썸네일 + 책 정보 */}
-      <DocumentListItemInfo document={document} isExpanded={isExpanded} />
-      {isExpanded ? (
-        <ActionContainer isExpanded>
+      <DocumentListItemInfo document={document} $isExpanded={$isExpanded} />
+      {$isExpanded ? (
+        <ActionContainer $isExpanded>
           <div style={{ marginBottom: "94px" }}>
             <DocumentListItemActions
-              isExpanded
+              $isExpanded
               onToggleExpand={handleToggleExpand}
             />
           </div>
 
-          <DocumentListItemPrice document={document} isExpanded />
+          <DocumentListItemPrice document={document} $isExpanded />
 
           <Button
             variant="primary"
@@ -48,8 +48,8 @@ export default function DocumentListItem({ document }: DocumentListItemProps) {
         </ActionContainer>
       ) : (
         <>
-          <DocumentListItemPrice document={document} isExpanded={false} />
-          <ActionContainer isExpanded={false}>
+          <DocumentListItemPrice document={document} $isExpanded={false} />
+          <ActionContainer $isExpanded={false}>
             <Button
               variant="primary"
               size="default"
@@ -59,7 +59,7 @@ export default function DocumentListItem({ document }: DocumentListItemProps) {
             </Button>
 
             <DocumentListItemActions
-              isExpanded={false}
+              $isExpanded={false}
               onToggleExpand={handleToggleExpand}
             />
           </ActionContainer>

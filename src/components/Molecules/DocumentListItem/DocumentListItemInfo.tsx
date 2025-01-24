@@ -11,12 +11,12 @@ import {
 
 interface DocumentListItemInfoProps {
   document: Book;
-  isExpanded: boolean;
+  $isExpanded: boolean;
 }
 
 export default function DocumentListItemInfo({
   document,
-  isExpanded,
+  $isExpanded,
 }: DocumentListItemInfoProps) {
   const { thumbnail, title, authors, contents } = document;
   const bookContentWithEllipsis = contents ? `${contents}...` : "-";
@@ -27,16 +27,16 @@ export default function DocumentListItemInfo({
   return (
     <>
       {/* 썸네일 + 찜 아이콘 */}
-      <ThumbnailWrapper isExpanded={isExpanded}>
+      <ThumbnailWrapper $isExpanded={$isExpanded}>
         <img src={thumbnail} alt="thumbnail" width="100%" height="100%" />
 
-        <FavoriteIconWrapper isExpanded={isExpanded} onClick={toggleFavorite}>
+        <FavoriteIconWrapper $isExpanded={$isExpanded} onClick={toggleFavorite}>
           {isFavorite ? <FavoriteFillIcon /> : <FavoriteIcon />}
         </FavoriteIconWrapper>
       </ThumbnailWrapper>
 
       {/* 책 정보 */}
-      <InfoContainer isExpanded={isExpanded}>
+      <InfoContainer $isExpanded={$isExpanded}>
         <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
           <Typography color="textPrimary" variant="title3">
             {title}
@@ -48,7 +48,7 @@ export default function DocumentListItemInfo({
           ))}
         </div>
 
-        {isExpanded && (
+        {$isExpanded && (
           <div
             style={{
               display: "flex",
@@ -60,7 +60,7 @@ export default function DocumentListItemInfo({
             <Typography color="textPrimary" variant="body2Bold">
               책 소개
             </Typography>
-            <Typography variant="captionSmall" lineHeight="16px">
+            <Typography variant="captionSmall" $lineHeight="16px">
               {bookContentWithEllipsis}
             </Typography>
           </div>

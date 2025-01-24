@@ -28,8 +28,8 @@ export default function SearchInput(props: InputProps) {
   return (
     <InputContainer
       ref={containerRef}
-      isFocused={isFocused}
-      hasHistory={hasHistory}
+      $isFocused={isFocused}
+      $hasHistory={hasHistory}
     >
       <InputWrapper>
         <IconWrapper>
@@ -44,7 +44,7 @@ export default function SearchInput(props: InputProps) {
         />
       </InputWrapper>
 
-      <SearchListContainer isFocused={isFocused}>
+      <SearchListContainer $isFocused={isFocused}>
         {props.history.map((item) => (
           <SearchListItem
             key={item.timestamp}
