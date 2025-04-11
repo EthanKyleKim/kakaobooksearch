@@ -1,6 +1,4 @@
-# CDRI-Frontend-Interview
-
-CDRI-Frontend-Interview 인터뷰 과제를 수행하기 위해 제작된 프로젝트입니다. 과제로 진행한 프로젝트이지만 실제 프로젝트라고 생각하며 디자인 패턴을 적용하였고 최대한 확장가능성을 염두하고 개발하였습니다.
+# KakaoBook Search
 
 #### Atomic Design 패턴을 기반으로 구성되었으며, Figma를 통해 일관된 디자인을 설계하고 활용하였습니다.
 - Atomic Design: 컴포넌트를 Atom, Molecule, Organism, Template, Page로 나누어 재사용성과 유지보수성을 극대화하였습니다.
@@ -40,22 +38,6 @@ npm run lint
 # 테스트 실행
 npm run test
 ```
-
-## 📋 과제 조건
-
-### 필수 조건 
-
-- ⭕️ **React (v16.8 이상)**
-- ⭕️ **TypeScript (v4.0 이상)**
-- ⭕️ **Functional Component + React Hooks**
-- ⭕️ **CSS-in-JS (styled-components)**
-
-### 선택 조건
-
-- ⭕️ **비즈니스 로직 분리**: 긴 로직은 Hook으로 분리하여 별도 파일에 작성, 코드의 가독성과 유지보수성을 향상
-- ⚠️ **테스트 작성**: `Button` 및 `Header` 컴포넌트에 대해 2건의 테스트 작성 (테스트 코드 작성을 해보지 않아 해당 부분은 두 건만 진행했습니다.)
-- ⭕️ **React Query**: 비동기 데이터 관리를 위해 `@tanstack/react-query` 사용
-
 
 ## 🛠️ 사용 기술
 
